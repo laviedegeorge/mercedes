@@ -92,13 +92,23 @@ body{
     text-align: left;
     margin: 0%;
 }
-.torque-cont p:last-child, .power-cont p:last-child{
+#torque, #power{
     text-transform: uppercase;
     font-size: 3.5rem;
     margin: 0%;
     padding: 0%;
     font-weight: lighter;
     /* text-indent: 3rem; */
+}
+.first-sup{
+    position: relative;
+    top: -50%;
+    left: 40%;
+}
+.second-sup{
+    position: relative;
+    top: -50%;
+    left: 52%;
 }
 .torque-cont p:last-child sup, .power-cont p:last-child sup{
     font-size: 1rem;
@@ -119,7 +129,9 @@ body{
     grid-column: 1/2;
     grid-row: 3/8;
 }
-
+#numbers p{
+    transition: ease-in 0.5s;
+}
 .selected{
     font-size: 2.5rem;
     margin: 0%;
@@ -130,10 +142,13 @@ body{
     grid-column: 2/11;
     grid-row: 4/7;
 }
+.scaling{
+    animation: scaling .5s linear;
+}
 .main-display img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 .engine-cont{
     grid-column: 2/8;
@@ -156,4 +171,13 @@ body{
     font-size: 1.5rem;
     text-transform: uppercase;
     color: #777777;
+}
+
+@keyframes scaling {
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
 }
