@@ -100,6 +100,27 @@ body{
     font-weight: lighter;
     /* text-indent: 3rem; */
 }
+.digit-cont{
+    width: 2em;
+    height: 1em;
+    overflow: hidden;
+    line-height: 1em;
+    display: flex;
+}
+.digit-cont span {
+    position: relative;
+}
+/* ---------------------- */
+#powerNum1 , #torqueNum1 {
+   transition: ease-in .5s;
+  }
+  #powerNum2 , #torqueNum2{
+    transition: ease-in .5s;
+  }
+  #powerNum3 , #torqueNum3 {
+    transition: ease-in .5s;
+  }
+  /* ---------------------- */
 .first-sup{
     position: relative;
     top: -50%;
@@ -108,7 +129,7 @@ body{
 .second-sup{
     position: relative;
     top: -50%;
-    left: 52%;
+    left: 56%;
 }
 .torque-cont p:last-child sup, .power-cont p:last-child sup{
     font-size: 1rem;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
     <title>Mercedes</title>
     <link rel="stylesheet" href="/mercedes.css">
 </head>
+
 <body>
     <div class="main">
-        <div class="menu"><p>menu</p></div>
+        <div class="menu">
+            <p>menu</p>
+        </div>
         <div class="logo-name">
             <img src="/assets/mercedes-logo.png" class="logo" alt="mercedes-logo">
             <p id="name">amg gts coupe</p>
@@ -21,23 +25,36 @@
         <div class="torque-cont">
             <p>torque</p>
             <hr>
-            <p id="torque">670 </p>
+            <div id="torque">
+                <div class="digit-cont">
+                    <span id='torqueNum1'>1 2 3 4 5 6 7 8 9 0</span>
+                    <span id='torqueNum2'>1 2 3 4 5 6 7 8 9 0</span>
+                    <span id='torqueNum3'>1 2 3 4 5 6 7 8 9 0</span>
+                </div>
+            </div>
             <sup class="first-sup">nm</sup>
         </div>
         <div class="power-cont">
-                <p>power</p>
-                <hr>
-                <p id="power">378 </p>
-                <sup class="second-sup">kw</sup>
+            <p>power</p>
+            <hr>
+            <div id="power">
+                <div class="digit-cont">
+                    <span id='powerNum1'>1 2 3 4 5 6 7 8 9 0</span>
+                    <span id='powerNum2'>1 2 3 4 5 6 7 8 9 0</span>
+                    <span id='powerNum3'>1 2 3 4 5 6 7 8 9 0</span>
+                </div>
+
+            </div>
+            <sup class="second-sup">kw</sup>
         </div>
         <aside class="side-nav">
             <img src="/assets/chevron-up-solid.svg" id="up" alt="">
             <div id="numbers">
-                    <p class="selected">01</p>
-                    <p>02</p>
-                    <p>03</p>
-                    <p>04</p>
-                    <p>05</p>
+                <p class="selected">01</p>
+                <p>02</p>
+                <p>03</p>
+                <p>04</p>
+                <p>05</p>
             </div>
             <img src="/assets/chevron-down-solid.svg" id="down" alt="">
         </aside>
@@ -57,4 +74,5 @@
     </div>
 </body>
 <script src="/mercedes.js"></script>
+
 </html>

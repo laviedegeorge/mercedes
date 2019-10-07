@@ -47,8 +47,18 @@ const cars = [
 function updateData({ name,image,torque,power,engine,acceleration }) {
     let nameHolder = document.getElementById('name');
     let imageHolder = document.getElementById('image');
-    let torqueHolder = document.getElementById('torque');
-    let powerHolder= document.getElementById('power');
+    /* ---TORQUE NUMBERS------ */
+    let torqueNum1 = document.getElementById('torqueNum1');
+    let torqueNum2 = document.getElementById('torqueNum2');
+    let torqueNum3 = document.getElementById('torqueNum3');
+    /* let torqueHolder = document.getElementById('torque'); */
+
+    /* ---POWER NUMBERS------ */
+    let powerNum1 = document.getElementById('powerNum1');
+    let powerNum2 = document.getElementById('powerNum2');
+    let powerNum3 = document.getElementById('powerNum3');
+    /* let powerHolder= document.getElementById('power'); */
+
     let engineHolder = document.getElementById('engine');
     let accelerationHolder = document.getElementById('acceleration');
 
@@ -58,11 +68,28 @@ function updateData({ name,image,torque,power,engine,acceleration }) {
         counter_1 ++;
     }
 
+    let powerNums = Array.from(cars[counter_1].power);
+    let torqueNums = Array.from(cars[counter_1].torque);
+
+
     nameHolder.innerHTML = cars[counter_1].name;
     imageHolder.src = cars[counter_1].image;
     imageHolder.classList.add("scaling");
-    torqueHolder.innerHTML = cars[counter_1].torque;
-    powerHolder.innerHTML = cars[counter_1].power;
+
+    
+    /* ---POWER NUMBERS------ */
+
+    /* torqueHolder.innerHTML = cars[counter_1].torque; */
+    torqueNum1.style.top = `-${torqueNums[0] -1}em`;
+    torqueNum2.style.top = `-${torqueNums[1] -1}em`;
+    torqueNum3.style.top = `-${torqueNums[2] -1}em`;
+    
+    /* ---POWER NUMBERS------ */
+    powerNum1.style.top = `-${powerNums[0] -1}em`;
+    powerNum2.style.top = `-${powerNums[1] -1}em`;
+    powerNum3.style.top = `-${powerNums[2] -1}em`;
+    /* powerHolder.innerHTML = cars[counter_1].power; */
+
     engineHolder.innerHTML = cars[counter_1].engine;
     accelerationHolder.innerHTML = cars[counter_1].acceleration;
 
