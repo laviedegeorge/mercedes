@@ -44,7 +44,7 @@ const cars = [
         acceleration: '0 - 100km/h in 4.5s' 
     }
 ]
-/* -----------UPDATE DATA WITH INFO FROM CARS ARRAY------------ */
+/* -----------UPDATE TORQUE WITH INFO FROM CARS ARRAY------------ */
 const torque = () => {
     let torqueNum1 = document.getElementById('torqueNum1');
     let torqueNum2 = document.getElementById('torqueNum2');
@@ -57,6 +57,7 @@ const torque = () => {
     torqueNum3.style.top = `-${torqueNums[2] -1}em`;
 }
 
+/* -----------UPDATE POWER WITH INFO FROM CARS ARRAY------------ */
 const power = () => {
     let powerNum1 = document.getElementById('powerNum1');
     let powerNum2 = document.getElementById('powerNum2');
@@ -69,6 +70,7 @@ const power = () => {
     powerNum3.style.top = `-${powerNums[2] -1}em`;
 }
 
+/* -----------UPDATE NAME, IMG, ENGINE ACC. WITH INFO FROM CARS ARRAY------------ */
 function updateData({ name,image,engine,acceleration }) {
     let nameHolder = document.getElementById('name');
     let imageHolder = document.getElementById('image');
@@ -78,8 +80,7 @@ function updateData({ name,image,engine,acceleration }) {
     nameHolder.innerHTML = cars[counter].name;
     imageHolder.src = cars[counter].image;
     imageHolder.classList.add("scaling");
-    torque();
-    power();
+   
     engineHolder.innerHTML = cars[counter].engine;
     accelerationHolder.innerHTML = cars[counter].acceleration;
 
@@ -91,6 +92,8 @@ function updateData({ name,image,engine,acceleration }) {
 const updateCars = () => {
     numbers.forEach(el => el.classList.remove('selected'))
     updateData(cars[counter]);
+    torque();
+    power();
     numbers[counter].classList.add('selected');
 }
 
