@@ -1,4 +1,6 @@
 let counter = 0;
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
 const numbers = document.querySelectorAll("[id=numbers] p");
 
 const cars = [
@@ -128,7 +130,15 @@ const forArrowsOnly = closure => evt => {
 const sideNav = document.getElementById("side-nav");
 sideNav.addEventListener("click", forArrowsOnly(checker));
 
-const $ = sel => document.querySelector(sel);
+const loadImages = () => {
+  Object.values(cars).forEach(({ image: imageSrc }) => {
+    const image = document.createElement("img");
+    image.src = imageSrc;
+
+    $("#image").parentElement.append(image);
+  });
+};
+
 const resizeLogo = () => {
   const styles = {
     top: $(".logo-name").offsetTop + "px",
@@ -141,17 +151,22 @@ const resizeLogo = () => {
   });
   console.log($(".logo-name").offsetTop);
 };
+
 const hideBlind = () => {
   document.body.classList.add("hide-blind");
   resizeLogo();
 };
+
 window.onload = () => {
   const up = document.querySelector("[data-direction=down]");
   setupCounter("torque");
   setupCounter("power");
   setTimeout(() => {
     hideBlind();
+  }, 700);
+  setTimeout(() => {
     counter = -1;
     up.click();
-  }, 3000);
+    $$(".fade-in").forEach(el => el.classList.add("play"));
+  }, 1100);
 };
