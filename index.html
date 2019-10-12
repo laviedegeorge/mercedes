@@ -1,82 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mercedes</title>
-    <link rel="stylesheet" href="/mercedes.css">
-</head>
+    <link rel="stylesheet" href="/mercedes.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand:300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
     <div class="main">
-        <div class="menu">
-            <p>menu</p>
+      <div class="menu">
+        <div>menu</div>
+      </div>
+      <div class="logo-name">
+        <img src="/assets/mercedes-logo.png" class="logo" alt="mercedes-logo" />
+      </div>
+      <div id="name" class="product-label"></div>
+      <div class="search-cont">
+        <input type="text" class="search-input" />
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="search"
+          class="search svg-inline--fa fa-search fa-w-16"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            fill="currentColor"
+            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+          ></path>
+        </svg>
+      </div>
+      <div class="torque-cont info-box">
+        <p>torque</p>
+        <hr />
+        <div class="info-base">
+          <div class="digit-cont" data-counter="torque"></div>
+          <span class="unit">nm</span>
         </div>
-        <div class="logo-name">
-            <img src="/assets/mercedes-logo.png" class="logo" alt="mercedes-logo">
-            <p id="name"></p>
+      </div>
+      <div class="power-cont info-box">
+        <p>power</p>
+        <hr />
+        <div class="info-base">
+          <div class="digit-cont" data-counter="power"></div>
+          <span class="unit">kw</span>
         </div>
-        <div class="search-cont">
-            <input type="text" class="search-input">
-            <img src="/assets/search-solid.svg" class="search" alt="search">
+      </div>
+      <aside class="side-nav" id="side-nav">
+        <div>
+          <img
+            data-direction="up"
+            src="/assets/chevron-down-thin.svg"
+            id="up"
+          />
         </div>
-        <div class="torque-cont info-box">
-            <p>torque</p>
-            <hr>
-            <div id="torque">
-                <div class="digit-cont">
-                    <span id='torqueNum1'>1 2 3 4 5 6 7 8 9 0</span>
-                    <span id='torqueNum2'>1 2 3 4 5 6 7 8 9 0</span>
-                    <span id='torqueNum3'>1 2 3 4 5 6 7 8 9 0</span>
-                </div>
-            </div>
-            <sup class="first-sup">nm</sup>
+        <div id="numbers">
+          <p>01</p>
+          <p>02</p>
+          <p>03</p>
+          <p>04</p>
+          <p>05</p>
         </div>
-        <div class="power-cont info-box">
-            <p>power</p>
-            <hr>
-            <div id="power">
-                <div class="digit-cont">
-                    <span id='powerNum1'>1 2 3 4 5 6 7 8 9 0</span>
-                    <span id='powerNum2'>1 2 3 4 5 6 7 8 9 0</span>
-                    <span id='powerNum3'>1 2 3 4 5 6 7 8 9 0</span>
-                </div>
-
-            </div>
-            <sup class="second-sup">kw</sup>
+        <div>
+          <img
+            data-direction="down"
+            src="/assets/chevron-down-thin.svg"
+            class="chevron"
+          />
         </div>
-        <aside class="side-nav" id="side-nav">
-            <div>
-                <img data-direction="up" src="/assets/chevron-down-thin.svg" id="up">
-            </div>
-            <div id="numbers">
-                <p class="selected">01</p>
-                <p>02</p>
-                <p>03</p>
-                <p>04</p>
-                <p>05</p>
-            </div>
-            <div>
-                <img data-direction="down" src="/assets/chevron-down-thin.svg" class="chevron">
-            </div>
-        </aside>
-        <div class="main-display">
-            <img src="/assets/img/mercedces-1.png" class="scaling" id="image" alt="">
-        </div>
-        <div class="engine-cont info-box">
-            <p>engine</p>
-            <hr>
-            <p id="engine"></p>
-        </div>
-        <div class="acc-cont info-box">
-            <p>acceleration</p>
-            <hr>
-            <p id="acceleration"></p>
-        </div>
+      </aside>
+      <div class="main-display">
+        <img
+          src="/assets/img/mercedces-1.png"
+          class="scaling"
+          id="image"
+          alt=""
+        />
+      </div>
+      <div class="engine-cont info-box">
+        <p>engine</p>
+        <hr />
+        <p id="engine"></p>
+      </div>
+      <div class="acc-cont info-box">
+        <p>acceleration</p>
+        <hr />
+        <p id="acceleration"></p>
+      </div>
     </div>
-</body>
-<script src="/mercedes.js"></script>
-
+  </body>
+  <script src="/mercedes.js"></script>
 </html>

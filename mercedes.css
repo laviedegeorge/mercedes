@@ -2,36 +2,58 @@
     box-sizing: border-box;
 }
 
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    background-color: white;
+    opacity: 1;
+    visibility: visible;
+    transition: .4s ease-out;
+}
+
+body.hide-blind::after {
+    opacity: 0;
+    visibility: hidden;
+}
+
 body {
     --text-color: #333333;
     --gray-500: #777;
+    --gray-200: #CCC;
     margin: 0%;
     padding: 0%;
     width: 100%;
     height: 100vh;
     color: var(--gray-500);
-    font-family: 'Poppins', 'Courier New', Courier, monospace;
+    font-family: 'Quicksand', 'Dosis', Courier, monospace;
 }
 
 .main {
     width: 100%;
     height: 100vh;
     display: grid;
+    margin: 0 auto;
+    max-width: 1200px;
     grid-template-columns: repeat(11, 1fr);
-    grid-template-rows: repeat(2, 0.7fr) repeat(5, 1fr) 0.5fr;
+    grid-template-rows: 15px  7rem repeat(5, 1fr) 15px;
+}
+
+.menu, .search-cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding-top: 1rem;
+    align-items: flex-start;
+    justify-content: center;
+    text-transform: uppercase;
 }
 
 .menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    text-transform: uppercase;
     grid-column: 1/2;
     grid-row: 2/3;
 }
-
 
 .logo-name {
     display: flex;
@@ -47,9 +69,15 @@ body {
 }
 
 .logo {
-    width: 7rem;
-    height: 7rem;
+    width: 30vh;
+    height: 30vh;
     object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: .4s ease-out;
+    transform: translate(-50%, -50%);
+    z-index: 5;
 }
 
 .logo-name p {
@@ -57,13 +85,6 @@ body {
 }
 
 .search-cont {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    color: #777777;
     grid-column: 11/12;
     grid-row: 2/3;
 }
@@ -81,12 +102,11 @@ body {
 .torque-cont {
     height: 100%;
     width: 100%;
-    padding-left: 2rem;
     grid-column: 2/5;
     grid-row: 3/4;
 }
 
-.info-box p:first-child {
+.info-box > p:first-child {
     text-transform: uppercase;
     color: var(--text-color);
     font-weight: bold;
@@ -95,21 +115,22 @@ body {
     padding: 0%;
 }
 
-.info-box hr {
+.info-box > hr {
     border: none;
     height: 1px;
     width: 100%;
-    background-color: #777777;
+    background-color: var(--gray-200);
     text-align: left;
 }
 
-.info-box :last-child {
+.info-box > :last-child {
     text-transform: uppercase;
     color: var(--gray-500);
+    margin: .5rem 0;
 }
 
-#torque,
-#power {
+.info-box .info-base {
+    display: flex;
     text-transform: uppercase;
     font-size: 3.5rem;
     margin: 0%;
@@ -121,29 +142,18 @@ body {
 .digit-cont {
     width: 2em;
     height: 1em;
+    display: flex;
     overflow: hidden;
     line-height: 1em;
-    display: flex;
 }
 
-.digit-cont span {
+.digit-cont > span {
+    color: var(--text-color);
     position: relative;
-}
-
-/* ---------------------- */
-#powerNum1,
-#torqueNum1 {
-    transition: ease-in .5s;
-}
-
-#powerNum2,
-#torqueNum2 {
-    transition: ease-in .5s;
-}
-
-#powerNum3,
-#torqueNum3 {
-    transition: ease-in .5s;
+    display: inline-flex;
+    top: 0;
+    flex-direction: column;
+    transition: top .5s ease-in-out;
 }
 
 /* ---------------------- */
@@ -173,8 +183,22 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    grid-column: 1/2;
-    grid-row: 3/8;
+    padding-right: 1rem;
+    grid-column: 1 / 2;
+    grid-row:  3 / 7;
+}
+
+.product-label {
+    font-size: 1.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    grid-column: 5 / 8;
+    grid-row:  3 / 4;
+    letter-spacing: -1px;
+    word-spacing: 5px;
 }
 
 .side-nav p {
@@ -182,12 +206,19 @@ body {
     color: var(--gray-500);
 }
 
-.side-nav .chevron {
-    width: 30px;
-}
 .side-nav [data-direction] {
-    max-width: 50px;
+    width: 50px;
 }
+
+.unit {
+    font-size: .8rem;
+    font-weight: bolder;
+}
+
+.flex {
+    display: flex;
+}
+
 .side-nav [data-direction=up] {
     transform: rotate(180deg);
     transform-origin: center;
@@ -223,12 +254,15 @@ body {
 .engine-cont {
     grid-column: 2/8;
     grid-row: 7/8;
-    padding-left: 2rem;
 }
 
 .acc-cont {
     grid-column: 9/11;
     grid-row: 7/8;
+}
+
+.acc-cont > p:last-child, .engine-cont > p:last-child {
+    font-size: 1.5rem;
 }
 
 @keyframes scaling {
