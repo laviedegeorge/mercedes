@@ -99,8 +99,8 @@ const updateCars = () => {
 
 const checker = (e) => {
     e.preventDefault();
-    const up = document.getElementById('up');
-    const down = document.getElementById('down');
+    const up = document.querySelector('[data-direction=up]');
+    const down = document.querySelector('[data-direction=down]');
 
     /* UP */
      if (e.target == up) {
@@ -108,8 +108,8 @@ const checker = (e) => {
             counter --;
         } else {
             counter = 0;
+            return ;
         }
-        console.log(counter);
     }
 
     /* DOWN */
@@ -117,15 +117,25 @@ const checker = (e) => {
         if (counter == (numbers.length - 1) ) {
             counter = 0;
         } else {
-            counter ++;
+            counter++;
         }
        console.log(counter);
     }
     updateCars();
 }
 
+// event handler that works on for direction arrow
+const forArrowsOnly = (closure) => (evt) => {
+    const { target } = evt;
+    if (['up', 'down'].includes(target.getAttribute('data-direction'))) {
+        console.log('Working it ')
+        return closure(evt)
+    }
+    evt.preventDefault()
+}
+
 const sideNav = document.getElementById('side-nav');
-sideNav.addEventListener('click', checker);
+sideNav.addEventListener('click', forArrowsOnly(checker));
 
 window.onload = () => {
     updateCars();
