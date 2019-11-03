@@ -1,13 +1,33 @@
 *{
     box-sizing: border-box;
 }
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    background-color: white;
+    opacity: 1;
+    visibility: visible;
+    transition: .4s ease-out;
+}
+
+body.hide-blind::after {
+    opacity: 0;
+    visibility: hidden;
+}
+
 body{
+    --text-color: #333333;
+    --gray-500: #777;
+    --gray-200: #CCC;
     margin: 0%;
     padding: 0%;
     width: 100%;
     height: 100vh;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Quicksand', 'Dosis', Courier, monospace;
 }
+
 .main{
     width: 100%;
     height: 100vh;
@@ -39,9 +59,15 @@ body{
     grid-row: 2/4;
 }
 .logo{
-    width:7rem;
-    height: 7rem;
+    width: 30vh;
+    height: 30vh;
     object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: .5s ease-out;
+    transform: translate(-50%, -50%);
+    z-index: 5;
 }
 .logo-name p {
     font-size: 1.5rem;
@@ -85,7 +111,7 @@ body{
     /* text-indent: 3rem; */
 }
 .torque-cont hr, .power-cont hr {
-    border: none;
+    border: 1px solid #898989;
     height: 1px;
     width: 85%;
     background-color: #777777;
@@ -93,12 +119,18 @@ body{
     margin: 0%;
 }
 #torque, #power{
+    display: flex;
     text-transform: uppercase;
     font-size: 3.5rem;
     margin: 0%;
     padding: 0%;
     font-weight: lighter;
+    
     /* text-indent: 3rem; */
+}
+#torque div > * , #power div > *{
+    top: 0;
+    transition: ease-in .9s;
 }
 .digit-cont{
     width: 2em;
@@ -110,27 +142,13 @@ body{
 .digit-cont span {
     position: relative;
 }
-/* ---------------------- */
-#powerNum1 , #torqueNum1 {
-   transition: ease-in .5s;
-  }
-  #powerNum2 , #torqueNum2{
-    transition: ease-in .5s;
-  }
-  #powerNum3 , #torqueNum3 {
-    transition: ease-in .5s;
-  }
-  /* ---------------------- */
-.first-sup{
-    position: relative;
-    top: -50%;
-    left: 40%;
+
+.unit {
+    font-size: .8rem;
+    font-weight: bolder;
+    padding-top: 2px;
 }
-.second-sup{
-    position: relative;
-    top: -50%;
-    left: 56%;
-}
+
 .torque-cont p:last-child sup, .power-cont p:last-child sup{
     font-size: 1rem;
 }
@@ -150,9 +168,29 @@ body{
     grid-column: 1/2;
     grid-row: 3/8;
 }
-.chevron{
-    width: 30px;
+
+.product-label {
+    font-size: 1.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    grid-column: 5 / 8;
+    grid-row:  3 / 4;
+    letter-spacing: -1px;
+    word-spacing: 5px;
 }
+
+.chevron{
+    width: 40px;
+}
+
+.side-nav [data-direction=up] {
+    transform: rotate(180deg);
+    transform-origin: center;
+}
+
 #numbers p{
     transition: ease-in 0.5s;
 }
@@ -210,28 +248,34 @@ body{
 @media only screen and (max-width: 600px) {
     .main {
         grid-template-rows: repeat(2,0.4fr) repeat(5, 1fr) 0.4fr;
+        padding: 5px;
     }
     .menu {
         font-size: 0.7em;
     }
-    .logo{
-        width: 5rem;
-        height: 4.5rem;
+    
+    .product-label{
+        align-items: flex-start;
     }
+
     .logo-name p {
-        font-size: 1.3em;
+        font-size: .5em;
         font-weight: bold;
         text-align: center;
         margin: 0%;
     }
+
+    /* #up , #down {
+        width: 35px;
+    } */
     .torque-cont p:first-child, 
     .power-cont p:first-child, 
     .engine-cont p:first-child, 
     .acc-cont p:first-child {
-        font-size: 1em;
+        font-size: .7em;
     }
     #torque, #power {
-        font-size: 1.5em;
+        font-size: 1em;
     }
     .first-sup {
         top: -21%;
@@ -250,31 +294,81 @@ body{
         grid-row: 4/6;
     }
     .side-nav{
-        grid-row: 3/7;
+        display: flex;
+        grid-row: 7/8;
+        grid-column: 1/12;
+    }
+    #numbers{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #numbers > p {
+        margin: 0px 10px;
+    }
+    .selected{
+        font-size: 1.7em;
+    }
+    
+    .chevron {
+        width: 25px;
+        transform: rotate(270deg);
+    }
+
+    .torque-cont {
+        padding-left: 5px;
+        grid-column: 1/4;
+    }
+
+    .power-cont {
+        grid-column: 8/11;
+        padding-left: 5px;
+    }
+
+    .engine-cont {
+        grid-column: 1/7;
+        padding-left: 5px;
+    }
+
+    .acc-cont {
+        grid-column: 7/11;
+    }
+    .side-nav [data-direction=up]{
+        transform: rotate(90deg);
     }
     .engine-cont, .acc-cont{
         grid-row: 6/7;
-        padding-left: 0rem
+        /* padding-left: 0rem */
     }
     .engine-cont p:last-child, .acc-cont p:last-child {
-        font-size: 1em;
+        font-size: .7em;
     }
     .acc-cont{
-        grid-column: 8/10;
+        grid-column: 8/11;
     }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
+    .engine-cont p:last-child, 
+    .acc-cont p:last-child {
+        font-size: 1rem;
+    }
+    
+    .torque-cont p:first-child, 
+    .power-cont p:first-child, 
+    .engine-cont p:first-child, 
+    .acc-cont p:first-child {
+        font-size: 1rem;
+    }
+    #torque, #power{
+        font-size: 2rem;
+    }
 
+    .product-label{
+        position: relative;
+        top: 30px;
+        font-size: 1rem;
+    }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-
-} 

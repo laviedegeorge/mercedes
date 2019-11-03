@@ -1,6 +1,8 @@
 
 let counter = 0;
 const numbers = document.querySelectorAll('[id=numbers] p');
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
 
 const cars = [
     {   
@@ -52,9 +54,9 @@ const torque = () => {
 
     let torqueNums = Array.from(cars[counter].torque);
 
-    torqueNum1.style.top = `-${torqueNums[0] -1}em`;
-    torqueNum2.style.top = `-${torqueNums[1] -1}em`;
-    torqueNum3.style.top = `-${torqueNums[2] -1}em`;
+    torqueNum1.style.top = `-${torqueNums[0]}em`;
+    torqueNum2.style.top = `-${torqueNums[1]}em`;
+    torqueNum3.style.top = `-${torqueNums[2]}em`;
 }
 
 /* -----------UPDATE POWER WITH INFO FROM CARS ARRAY------------ */
@@ -65,9 +67,9 @@ const power = () => {
 
     let powerNums = Array.from(cars[counter].power);
 
-    powerNum1.style.top = `-${powerNums[0] -1}em`;
-    powerNum2.style.top = `-${powerNums[1] -1}em`;
-    powerNum3.style.top = `-${powerNums[2] -1}em`;
+    powerNum1.style.top = `-${powerNums[0]}em`;
+    powerNum2.style.top = `-${powerNums[1]}em`;
+    powerNum3.style.top = `-${powerNums[2]}em`;
 }
 
 /* -----------UPDATE NAME, IMG, ENGINE ACC. WITH INFO FROM CARS ARRAY------------ */
@@ -99,8 +101,10 @@ const updateCars = () => {
 
 const checker = (e) => {
     e.preventDefault();
+
     const up = document.getElementById('up');
     const down = document.getElementById('down');
+
 
     /* UP */
      if (e.target == up) {
@@ -124,10 +128,45 @@ const checker = (e) => {
     updateCars();
 }
 
+const resizeLogo = () => {
+    const styles = {
+      top: $(".logo-name").offsetTop + "px",
+      width: "7rem",
+      height: "7rem",
+      transform: "translateX(-50%)"
+    };
+  
+    if (screen.availWidth < 400) {
+        styles.width = "3.5rem";
+        styles.height = "3.5rem"
+    }
+
+    Object.entries(styles)
+    .map((array) => {
+      $(".logo").style[array[0]] = array[1];
+    });
+    
+    console.log($(".logo-name").offsetTop);
+  };
+
+const hideBlind = () => {
+    document.body.classList.add("hide-blind");
+    resizeLogo();
+  };
+
 const sideNav = document.getElementById('side-nav');
 sideNav.addEventListener('click', checker);
 
+/* document.addEventListener('keypress', (evt) => console.log(evt.keyCode)) */
+
 window.onload = () => {
-    updateCars();
+    setTimeout(() => {
+        hideBlind();
+        setTimeout(() => {
+            document.getElementById('side-nav').click()
+        }, 000);
+        
+      }, 900);
 };
 
+document.addEventListener('keypress', (evt) => console.log(evt.keyCode))

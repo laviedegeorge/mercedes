@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mercedes</title>
     <link rel="stylesheet" href="/mercedes.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand:300&display=swap"
+      rel="stylesheet"
+    />
 </head>
 
 <body>
@@ -16,8 +20,9 @@
         </div>
         <div class="logo-name">
             <img src="/assets/mercedes-logo.png" class="logo" alt="mercedes-logo">
-            <p id="name"></p>
+            <!-- <p id="name"></p> -->
         </div>
+        <div id="name" class="product-label"></div>
         <div class="search-cont">
             <input type="text" class="search-input">
             <img src="/assets/search-solid.svg" class="search" alt="search">
@@ -27,29 +32,35 @@
             <hr>
             <div id="torque">
                 <div class="digit-cont">
-                    <span id='torqueNum1'>1 2 3 4 5 6 7 8 9 0</span>
-                    <span id='torqueNum2'>1 2 3 4 5 6 7 8 9 0</span>
-                    <span id='torqueNum3'>1 2 3 4 5 6 7 8 9 0</span>
+                    <span id='torqueNum1'>0 1 2 3 4 5 6 7 8 9</span>
+                    <span id='torqueNum2'>0 1 2 3 4 5 6 7 8 9</span>
+                    <span id='torqueNum3'>0 1 2 3 4 5 6 7 8 9</span>
                 </div>
+                <span class="unit">nm</span>
             </div>
-            <sup class="first-sup">nm</sup>
+            
         </div>
         <div class="power-cont">
             <p>power</p>
             <hr>
             <div id="power">
                 <div class="digit-cont">
-                    <span id='powerNum1'>1 2 3 4 5 6 7 8 9 0</span>
-                    <span id='powerNum2'>1 2 3 4 5 6 7 8 9 0</span>
-                    <span id='powerNum3'>1 2 3 4 5 6 7 8 9 0</span>
+                    <span id='powerNum1'>0 1 2 3 4 5 6 7 8 9</span>
+                    <span id='powerNum2'>0 1 2 3 4 5 6 7 8 9</span>
+                    <span id='powerNum3'>0 1 2 3 4 5 6 7 8 9</span>
                 </div>
-
+                <span class="unit">kw</span>
             </div>
-            <sup class="second-sup">kw</sup>
+            
         </div>
         <aside class="side-nav" id="side-nav">
             <div>
-                <img src="/assets/chevron-up-solid.svg" id="up"  class="chevron" alt="">
+                <img
+                    data-direction="up"
+                    src="/assets/chevron-down-thin.svg"
+                    class="chevron"
+                    id="up"
+                />
             </div>
             <div id="numbers">
                 <p class="selected">01</p>
@@ -59,7 +70,12 @@
                 <p>05</p>
             </div>
             <div>
-                <img src="/assets/chevron-down-solid.svg" class="chevron" id="down" alt="">
+                <img
+                    data-direction="down"
+                    src="/assets/chevron-down-thin.svg"
+                    class="chevron"
+                    id="down"
+                />
             </div>
         </aside>
         <div class="main-display">
