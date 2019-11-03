@@ -117,7 +117,7 @@ const checker = (e) => {
     }
 
     /* DOWN */
-     if (e.target == down) {
+     if (e.target == down ) {
         if (counter == (numbers.length - 1) ) {
             counter = 0;
         } else {
