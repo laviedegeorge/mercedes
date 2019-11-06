@@ -212,6 +212,10 @@ body{
     height: 100%;
     object-fit: contain;
 }
+
+.hide{
+    display: none;
+}
 .engine-cont{
     grid-column: 2/8;
     grid-row: 7/8;

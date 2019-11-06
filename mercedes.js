@@ -3,6 +3,7 @@ let counter = 0;
 const numbers = document.querySelectorAll('[id=numbers] p');
 const $ = sel => document.querySelector(sel);
 const $$ = sel => document.querySelectorAll(sel);
+const imgContainer = document.getElementById('imgDisplay');
 
 const cars = [
     {   
@@ -47,7 +48,7 @@ const cars = [
     }
 ]
 /* -----------UPDATE TORQUE WITH INFO FROM CARS ARRAY------------ */
-const torque = () => {
+const updateTorque = () => {
     let torqueNum1 = document.getElementById('torqueNum1');
     let torqueNum2 = document.getElementById('torqueNum2');
     let torqueNum3 = document.getElementById('torqueNum3');
@@ -60,7 +61,7 @@ const torque = () => {
 }
 
 /* -----------UPDATE POWER WITH INFO FROM CARS ARRAY------------ */
-const power = () => {
+const updatePower = () => {
     let powerNum1 = document.getElementById('powerNum1');
     let powerNum2 = document.getElementById('powerNum2');
     let powerNum3 = document.getElementById('powerNum3');
@@ -75,27 +76,53 @@ const power = () => {
 /* -----------UPDATE NAME, IMG, ENGINE ACC. WITH INFO FROM CARS ARRAY------------ */
 function updateData({ name,image,engine,acceleration }) {
     let nameHolder = document.getElementById('name');
-    let imageHolder = document.getElementById('image');
+    /* let imageHolder = document.getElementById('image'); */
     let engineHolder = document.getElementById('engine');
     let accelerationHolder = document.getElementById('acceleration');
 
     nameHolder.innerHTML = cars[counter].name;
-    imageHolder.src = cars[counter].image;
-    imageHolder.classList.add("scaling");
+    /* imageHolder.src = cars[counter].image;
+    imageHolder.classList.add("scaling"); */
    
     engineHolder.innerHTML = cars[counter].engine;
     accelerationHolder.innerHTML = cars[counter].acceleration;
 
-    setTimeout(() => {
+    /* setTimeout(() => {
         imageHolder.classList.remove('scaling');
-    }, 500);
+    }, 500); */
 }
 
-const updateCars = () => {
+const updateImage = () => {
+    const images = imgContainer.children;
+    Array.from(images).forEach(i => {
+        i.classList.add('hide')
+    })
+        images[counter].classList.remove('hide');
+        images[counter].classList.add('scaling');
+
+        setTimeout(() => {
+        images[counter].classList.remove('scaling');
+        }, 500);
+
+    
+}
+
+const createImage = () => {
+    cars.forEach(obj => {
+        const img = document.createElement('img');
+        img.setAttribute('src', obj.image);
+        img.classList.add('hide');
+        imgDisplay.append(img);
+    });
+
+    updateImage();
+}
+const updatePage = () => {
     numbers.forEach(el => el.classList.remove('selected'))
     updateData(cars[counter]);
-    torque();
-    power();
+    updateTorque();
+    updatePower();
+    updateImage();
     numbers[counter].classList.add('selected');
 }
 
@@ -107,13 +134,12 @@ const checker = (e) => {
 
 
     /* UP */
-     if (e.target == up) {
+     if (e.target == up  ) {
          if (counter > 0) {
             counter --;
         } else {
             counter = 0;
         }
-        console.log(counter);
     }
 
     /* DOWN */
@@ -123,9 +149,8 @@ const checker = (e) => {
         } else {
             counter ++;
         }
-       console.log(counter);
     }
-    updateCars();
+    updatePage();
 }
 
 const resizeLogo = () => {
@@ -146,20 +171,29 @@ const resizeLogo = () => {
       $(".logo").style[array[0]] = array[1];
     });
     
-    console.log($(".logo-name").offsetTop);
   };
 
 const hideBlind = () => {
     document.body.classList.add("hide-blind");
     resizeLogo();
-  };
+};
 
 const sideNav = document.getElementById('side-nav');
 sideNav.addEventListener('click', checker);
 
-/* document.addEventListener('keypress', (evt) => console.log(evt.keyCode)) */
+document.addEventListener('keyup', (evt) => {
+    const up = document.getElementById('up');
+    const down = document.getElementById('down');
+
+    if (event.keyCode == 38) {
+        up.click()
+    }else if (event.keyCode == 40) {
+        down.click();
+    }    
+})
 
 window.onload = () => {
+    createImage();
     setTimeout(() => {
         hideBlind();
         setTimeout(() => {
@@ -169,4 +203,4 @@ window.onload = () => {
       }, 900);
 };
 
-document.addEventListener('keypress', (evt) => console.log(evt.keyCode))
+/* document.addEventListener('keyup', (evt) => console.log(evt.keyCode)) */
