@@ -161,7 +161,7 @@ const resizeLogo = () => {
       transform: "translateX(-50%)"
     };
   
-    if (screen.availWidth < 400) {
+    if (screen.availWidth < 600) {
         styles.width = "3.5rem";
         styles.height = "3.5rem"
     }

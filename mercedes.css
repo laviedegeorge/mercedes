@@ -251,7 +251,7 @@ body{
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .main {
-        grid-template-rows: repeat(2,0.4fr) repeat(5, 1fr) 0.4fr;
+        grid-template-rows: repeat(2,0.5fr) repeat(5, 1fr) 0.4fr;
         padding: 5px;
     }
     .menu {
@@ -262,16 +262,19 @@ body{
         align-items: flex-start;
     }
 
+    .logo-name{
+        grid-column: 5/8;
+        grid-row: 2/3;
+    }
+
     .logo-name p {
         font-size: .5em;
         font-weight: bold;
         text-align: center;
         margin: 0%;
+
     }
 
-    /* #up , #down {
-        width: 35px;
-    } */
     .torque-cont p:first-child, 
     .power-cont p:first-child, 
     .engine-cont p:first-child, 
